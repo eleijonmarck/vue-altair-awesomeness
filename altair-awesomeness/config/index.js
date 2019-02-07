@@ -44,7 +44,9 @@ module.exports = {
 
     // proxyyable
     proxyTable: {
-      '/vega-example': 'http://localhost:5000'
+      '/vega-example': 'http://localhost:5000',
+      '/vega-altitude': 'http://localhost:5000',
+      '/vega-latlong': 'http://localhost:5000',
     },
   },
 
