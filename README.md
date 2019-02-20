@@ -33,7 +33,6 @@ npm install --save vega-embed
 
 ## Running
 
-Flask backend
 ```bash
 $ FLASK_APP=app.py flask run
 ```
