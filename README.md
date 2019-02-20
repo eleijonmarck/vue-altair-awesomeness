@@ -45,6 +45,9 @@ $ npm run dev
 
 ### Inspired by:
 
+https://github.com/xhochy
+
+
 https://github.com/xhochy/altair-vue-vega-example
 
 
