@@ -2,19 +2,19 @@
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
-        <v-btn @click.native="reloadImage()">Reload</v-btn>
+        <v-btn @click.native="reloadImage()">Fuel Flow</v-btn>
         <div id="vega-example-box"></div>
       </v-layout>
     </v-slide-y-transition>
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
-        <v-btn @click.native="reloadAltitude()">Reload</v-btn>
+        <v-btn @click.native="reloadAltitude()">Altitude</v-btn>
         <div id="vega-altitude"></div>
       </v-layout>
     </v-slide-y-transition>
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
-        <v-btn @click.native="reloadLatLong()">Reload</v-btn>
+        <v-btn @click.native="reloadLatLong()">Lat/Long</v-btn>
         <div id="vega-latlong"></div>
       </v-layout>
     </v-slide-y-transition>

@@ -17,12 +17,10 @@ def index():
 @app.route('/vega-example')
 def example():
 
-    attributes = [
-        'FUEL_FLOW_1:Q', 
-        'FUEL_FLOW_2:Q', 
-    ]
+    fuel_flows = [col for col in df.columns if 'FUEL_FLOW' in col]
+    attributes = fuel_flows
 
-    base = alt.Chart().mark_line().encode(
+    base = alt.Chart().mark_point().encode(
         x='flight_datetime:T',
     )
 
@@ -34,7 +32,7 @@ def example():
         )
         
         chart |= row
-        
+
     return jsonify(
         chart.to_dict()
     )
@@ -42,10 +40,9 @@ def example():
 @app.route('/vega-altitude')
 def vega_altitude():
 
-    attributes = [
-        'ALTITUDE_STANDARD:Q', 
-        'ALTITUDE_BARO:Q', 
-    ]
+    altitudes = [col for col in df.columns if 'ALTITUDE' in col]
+
+    attributes = altitudes
 
     base = alt.Chart().mark_line().encode(
         x='flight_datetime:T',
