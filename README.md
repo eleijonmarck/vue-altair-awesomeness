@@ -1,21 +1,6 @@
 # vue-altair-awesomeness
 Trying out the new technology of Vue and Altair
 
-
-```
-npm install -g vue-cli
-```
-
-```
-npm install vue-cli
-```
-
-
-```
-FLASK_APP=app.py flask run
-```
-
-
 ```
 npm install -g vue-cli
 ```
@@ -25,7 +10,7 @@ more complicated webpack example here as we want to have a running webpack
 server.
 
 ```
-vue init webpack altair-app
+vue init webpack altair-awesomeness
 ```
 
  * In `build/webpack.dev.conf.js`, we have added `disableHostCheck: true` so that
@@ -54,6 +39,6 @@ $ FLASK_APP=app.py flask run
 ```
 
 ```bash
-$ cd altair-vue-awesomeness
+$ cd altair-awesomeness
 $ npm run dev
 ``` 
