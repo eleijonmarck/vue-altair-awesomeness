@@ -42,3 +42,7 @@ $ FLASK_APP=app.py flask run
 $ cd altair-awesomeness
 $ npm run dev
 ``` 
+
+### Inspired by:
+https://github.com/xhochy/altair-vue-vega-example
+https://www.youtube.com/watch?v=4L568emKOvs
