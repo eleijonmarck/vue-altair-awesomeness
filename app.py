@@ -5,10 +5,9 @@ import altair as alt
 import pandas as pd
 
 alt.data_transformers.enable("default", max_rows=None)
+cars = data.cars()
 
 app = Flask(__name__)
-
-df = pd.read_csv("data/2018_08_17_0013_2018-08-17--high-reti.csv.gz")
 
 
 @app.route("/")
@@ -19,55 +18,53 @@ def index():
 @app.route("/vega-example")
 def example():
 
-    fuel_flows = [col for col in df.columns if "FUEL_FLOW" in col]
-    attributes = fuel_flows
-
-    base = alt.Chart().mark_point().encode(x="flight_datetime:T")
-
-    chart = alt.hconcat(data=df)
-
-    for y_encoding in attributes:
-        row = base.encode(y=y_encoding)
-
-        chart |= row
+    chart = (
+        alt.Chart(cars)
+        .mark_point()
+        .encode(x="Horsepower", y="Miles_per_Gallon")
+        .interactive()
+    )
 
     return jsonify(chart.to_dict())
 
 
-@app.route("/vega-altitude")
-def vega_altitude():
+@app.route("/vega-example2")
+def vega_example2():
 
-    altitudes = [col for col in df.columns if "ALTITUDE" in col]
+    chart = (
+        alt.Chart(cars)
+        .mark_point()
+        .encode(y="Horsepower:Q", color="Origin:N")
+        .interactive()
+    )
 
-    attributes = altitudes
-
-    base = alt.Chart().mark_line().encode(x="flight_datetime:T")
-
-    chart = alt.hconcat(data=df)
-
-    for y_encoding in attributes:
-        row = base.encode(y=y_encoding)
-
-        chart |= row
+    chart = chart.encode(x="Acceleration:Q") | chart.encode(x="Displacement:Q")
 
     return jsonify(chart.to_dict())
 
 
-@app.route("/vega-latlong")
-def latlong():
+@app.route("/vega-example3")
+def vega_example3():
 
-    points = (
-        alt.Chart(df)
-        .mark_circle()
+    brush = alt.selection_interval()
+
+    chart = (
+        alt.Chart(cars)
+        .mark_point()
         .encode(
-            longitude="longitude:Q",
-            latitude="latitude:Q",
-            size=alt.value(10),
-            color=alt.value("steelblue"),
+            alt.X(alt.repeat("column"), type="quantitative"),
+            alt.Y(alt.repeat("row"), type="quantitative"),
+            color=alt.condition(brush, "Origin:N", alt.value("gray")),
+        )
+        .add_selection(brush)
+        .properties(width=250, height=250)
+        .repeat(
+            row=["Horsepower", "Miles_per_Gallon"],
+            column=["Acceleration", "Displacement"],
         )
     )
 
-    return jsonify(points.to_dict())
+    return jsonify(chart.to_dict())
 
 
 if __name__ == "__main__":
