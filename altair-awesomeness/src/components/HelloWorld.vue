@@ -2,19 +2,19 @@
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
-        <v-btn @click.native="reloadExample1()">Example One</v-btn>
+        <v-btn @click.native="reloadExample1()">Scatterplot</v-btn>
         <div id="vega-example1"></div>
       </v-layout>
     </v-slide-y-transition>
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
-        <v-btn @click.native="reloadExample2()">Example two</v-btn>
+        <v-btn @click.native="reloadExample2()">Side by Side</v-btn>
         <div id="vega-example2"></div>
       </v-layout>
     </v-slide-y-transition>
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
-        <v-btn @click.native="reloadExample3()">Example three</v-btn>
+        <v-btn @click.native="reloadExample3()">Multi-Panel Scatter with Linked Brushing</v-btn>
         <div id="vega-example3"></div>
       </v-layout>
     </v-slide-y-transition>
@@ -25,21 +25,21 @@
 import {default as vegaEmbed} from 'vega-embed'
 export default {
   methods: {
-    reloadImage () {
+    reloadExample1 () {
       fetch('/vega-example1').then(response => {
         response.json().then(spec => {
-          vegaEmbed('#vega-example', spec, {actions: false})
+          vegaEmbed('#vega-example1', spec, {actions: false})
         })
       })
     },
-    reloadAltitude () {
+    reloadExample2 () {
       fetch('/vega-example2').then(response => {
         response.json().then(spec => {
           vegaEmbed('#vega-example2', spec, {actions: false})
         })
       })
     },
-    reloadLatLong () {
+    reloadExample3 () {
       fetch('/vega-example3').then(response => {
         response.json().then(spec => {
           vegaEmbed('#vega-example3', spec, {actions: false})

@@ -15,14 +15,13 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/vega-example")
-def example():
+@app.route("/vega-example1")
+def vega_example1():
 
     chart = (
         alt.Chart(cars)
         .mark_point()
-        .encode(x="Horsepower", y="Miles_per_Gallon")
-        .interactive()
+        .encode(x="Horsepower", y="Miles_per_Gallon", color="Origin", shape="Origin")
     )
 
     return jsonify(chart.to_dict())
