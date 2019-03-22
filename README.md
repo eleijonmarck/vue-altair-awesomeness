@@ -33,7 +33,6 @@ npm install --save vega-embed
 
 ## Running
 
-Flask backend
 ```bash
 $ FLASK_APP=app.py flask run
 ```
@@ -44,5 +43,11 @@ $ npm run dev
 ``` 
 
 ### Inspired by:
+
+https://github.com/xhochy
+
+
 https://github.com/xhochy/altair-vue-vega-example
+
+
 https://www.youtube.com/watch?v=4L568emKOvs
